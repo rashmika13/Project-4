@@ -1,0 +1,15 @@
+.MainPage-link-margin {
+  margin-bottom: 10px;
+}
+
+.MainPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.MainPage-controls {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  margin-left: 20px;
+}
