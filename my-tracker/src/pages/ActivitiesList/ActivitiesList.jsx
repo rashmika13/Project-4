@@ -1,23 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import userService from "../../utils/userService";
 
 const Activity = (props) => (
   <tr>
-    {/* <td>{props.activity.username}</td> */}
+    <td>{props.activity.username}</td>
     <td>{props.activity.description}</td>
     <td>{props.activity.duration}</td>
     <td>{props.activity.date.substring(0, 10)}</td>
     <td>
-      <Link to={"/edit/" + props.activity._id}>edit</Link>|{" "}
-      <a
-        href="#"
-        onClick={() => {
-          props.deleteActivity(props.activity._id);
-        }}
-      >
-        delete
-      </a>
+      {props.user && (
+        <>
+          <Link to={"/edit/" + props.activity._id}>edit</Link> |
+          <button
+            onClick={() => {
+              props.deleteActivity(props.activity._id);
+            }}
+          >
+            delete
+          </button>
+        </>
+      )}
     </td>
   </tr>
 );
@@ -47,10 +51,11 @@ class ActivitiesList extends Component {
     });
   }
 
-  ActivitiesList() {
+  activitiesList() {
     return this.state.activities.map((currentactivity) => {
       return (
         <Activity
+          user={userService.getUser()}
           activity={currentactivity}
           deleteActivity={this.deleteActivity}
           key={currentactivity._id}
@@ -70,10 +75,10 @@ class ActivitiesList extends Component {
               <th>Descriptions</th>
               <th>Duration</th>
               <th>Date</th>
-              <th>Actions</th>
+              {this.props.user && <th>Actions</th>}
             </tr>
           </thead>
-          <tbody>{this.ActivitiesList()}</tbody>
+          <tbody>{this.activitiesList()}</tbody>
         </table>
       </div>
     );

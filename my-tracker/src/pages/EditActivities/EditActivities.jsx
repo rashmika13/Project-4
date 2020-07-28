@@ -14,20 +14,19 @@ class EditActivities extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      //   username: "",
       description: "",
       duration: 0,
       date: new Date(),
-      //   users: [],
     };
   }
 
   componentDidMount() {
+    console.log("Edit Mount");
     axios
       .get("/api/activities/" + this.props.match.params.id)
       .then((response) => {
+        console.log(response.data);
         this.setState({
-          //   username: response.data.username,
           description: response.data.description,
           duration: response.data.duration,
           date: new Date(response.data.date),
@@ -38,9 +37,9 @@ class EditActivities extends Component {
       });
   }
 
-  //   onChangeUsername(e) {
-  //     this.setState({ username: e.target.value });
-  //   }
+  onChangeUsername(e) {
+    this.setState({ username: e.target.value });
+  }
   onChangeDescription(e) {
     this.setState({ description: e.target.value });
   }
@@ -56,19 +55,18 @@ class EditActivities extends Component {
   onSubmit(e) {
     e.preventDefault();
     const activity = {
-      //   username: this.state.username,
+      // username: this.state.user.name,
       description: this.state.description,
       duration: this.state.duration,
       date: this.state.date,
     };
 
     console.log(activity);
-
     axios
-      .post("/api/activities/update" + this.match.params.id, activity)
+      .post("/api/activities/update/" + this.props.match.params.id, activity)
       .then((res) => console.log(res.data));
 
-    // window.location = "/";
+    window.location = "/";
   }
 
   render() {
@@ -76,29 +74,12 @@ class EditActivities extends Component {
       <div>
         <h3>EDIT ACTIVITIES </h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Username:</label>
-            {/* <select
-              ref="userInput"
-              required="form-control"
-              value={this.state.username}
-              onChange={this.onChangeUsername}
-            >
-              {this.state.users.map(function (user) {
-                return (
-                  <option key={user} value={user}>
-                    {user}
-                  </option>
-                );
-              })}
-              >
-            </select> */}
-          </div>
+          <div className="form-group"></div>
           <div className="form-group">
             <label>Description: </label>
             <input
               type="text"
-              // className="form-control"
+              className="form-control"
               value={this.state.description}
               onChange={this.onChangeDescription}
             />
@@ -107,7 +88,7 @@ class EditActivities extends Component {
             <label>Duration (in minutes): </label>
             <input
               type="text"
-              // className="form-control"
+              className="form-control"
               value={this.state.duration}
               onChange={this.onChangeDuration}
             />

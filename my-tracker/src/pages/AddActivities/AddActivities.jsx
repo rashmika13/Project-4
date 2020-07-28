@@ -3,6 +3,7 @@ import "./AddActivities.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import userService from "../../utils/userService";
 
 class AddActivities extends Component {
   constructor(props) {
@@ -14,16 +15,16 @@ class AddActivities extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: "",
       description: "",
       duration: 0,
       date: new Date(),
-      users: [],
+      user: null,
     };
   }
 
   componentDidMount() {
-    this.setState({ users: ["test user"], username: "test" });
+    console.log(userService.getUser());
+    this.setState({ user: userService.getUser() });
   }
 
   onChangeUsername(e) {
@@ -44,14 +45,13 @@ class AddActivities extends Component {
   onSubmit(e) {
     e.preventDefault();
     const activity = {
-      username: this.state.username,
+      username: this.state.user.name,
       description: this.state.description,
       duration: this.state.duration,
       date: this.state.date,
     };
 
     console.log(activity);
-
     axios
       .post("/api/activities/add", activity)
       .then((res) => console.log(res.data));
@@ -62,26 +62,9 @@ class AddActivities extends Component {
   render() {
     return (
       <div>
-        <h3>ADD ACTIVITIES </h3>
+        <h3>ADD ACTIVITY </h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Username:</label>
-            <select
-              ref="userInput"
-              required="form-control"
-              value={this.state.username}
-              onChange={this.onChangeUsername}
-            >
-              {this.state.users.map(function (user) {
-                return (
-                  <option key={user} value={user}>
-                    {user}
-                  </option>
-                );
-              })}
-              >
-            </select>
-          </div>
+          <div className="form-group"></div>
           <div className="form-group">
             <label>Description: </label>
             <input

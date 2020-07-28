@@ -29,7 +29,7 @@ function create(activity) {
 
 function update(activity) {
   return fetch(`${BASE_URL}/${activity._id}`, {
-    method: "POST",
+    method: "PUT",
     headers: { "content-type": "application/json" },
     body: JSON.stringify(activity),
   }).then((res) => res.json());

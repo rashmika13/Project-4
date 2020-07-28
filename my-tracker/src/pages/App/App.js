@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
-import MainPage from "../../pages/MainPage/MainPage";
 import AddActivities from "../AddActivities/AddActivities";
-// import EditActivities from "../EditActivities/EditActivities";
+import EditActivities from "../EditActivities/EditActivities";
+import ActivitiesList from "../ActivitiesList/ActivitiesList";
+import NavBar from "../../components/NavBar/NavBar.jsx";
 
 class App extends Component {
   constructor() {
@@ -29,17 +30,20 @@ class App extends Component {
     return (
       <div className="App">
         <header className="header-footer">MY APP</header>
+        <NavBar user={this.state.user} handleLogout={this.handleLogout} />
         <Switch>
           <Route
             exact
             path="/"
-            render={() => (
-              <MainPage
+            render={({ history }) => (
+              <ActivitiesList
+                history={history}
                 user={this.state.user}
                 handleLogout={this.handleLogout}
               />
             )}
           />
+          )} />
           <Route
             exact
             path="/signup"
@@ -61,9 +65,22 @@ class App extends Component {
             )}
           />
           <Route
-            exact
+            path="/edit/:id"
+            render={(props) =>
+              userService.getUser() ? (
+                <EditActivities
+                  location={props.location}
+                  {...props}
+                  user={this.state.user}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
             path="/create"
-            render={({ history }) => <AddActivities history={history} />}
+            render={({ props }) => <AddActivities {...props} />}
           />
         </Switch>
       </div>

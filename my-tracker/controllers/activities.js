@@ -50,14 +50,13 @@ function deleteOne(req, res) {
 function update(req, res) {
   Activity.findById(req.params.id)
     .then((activity) => {
-      activity.username = req.body.username;
       activity.description = req.body.description;
       activity.duration = Number(req.body.duration);
       activity.date = Date.parse(req.body.date);
 
       activity
         .save()
-        .then(() => res.json("Exercise updated"))
+        .then(() => res.json("Activity updated"))
         .catch((err) => res.status(400).json("Error:" + err));
     })
     .catch((err) => res.status(400).json("Error:" + err));

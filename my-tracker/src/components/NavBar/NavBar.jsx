@@ -10,6 +10,11 @@ const NavBar = (props) => {
       </Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <span className="NavBar-welcome">WELCOME, {props.user.name}</span>
+      <div>
+        <Link to="/">ACTIVITY LIST</Link>
+        &nbsp;&nbsp;&nbsp;
+        <Link to="/create">ADD ACTIVITY</Link>
+      </div>
     </div>
   ) : (
     <div>
