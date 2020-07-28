@@ -5,6 +5,8 @@ import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 import MainPage from "../../pages/MainPage/MainPage";
+import AddActivities from "../AddActivities/AddActivities";
+// import EditActivities from "../EditActivities/EditActivities";
 
 class App extends Component {
   constructor() {
@@ -57,6 +59,11 @@ class App extends Component {
                 history={history}
               />
             )}
+          />
+          <Route
+            exact
+            path="/create"
+            render={({ history }) => <AddActivities history={history} />}
           />
         </Switch>
       </div>

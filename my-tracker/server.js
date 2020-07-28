@@ -18,6 +18,7 @@ app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "build")));
 
 app.use("/api/users", require("./routes/api/users"));
+app.use("/api/activities", require("./routes/api/activities"));
 
 app.use("/api", function (req, res) {
   res.status(404).json({ error: "Resource not found" });
