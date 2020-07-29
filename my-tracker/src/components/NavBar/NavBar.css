@@ -1,13 +1,23 @@
 .NavBar {
   display: flex;
   justify-content: center;
-  margin: 0 0 20px;
 }
 
 .NavBar-link {
-  margin: 0 10px;
+  margin-left: 90px;
 }
 
 .NavBar-welcome {
-  color: grey;
+  color: royalblue;
+}
+
+.NavBar-list {
+  margin-right: 30px;
+  color: purple;
+  font-size: 25px;
+}
+.NavBar-add {
+  margin-right: 30px;
+  color: purple;
+  font-size: 25px;
 }

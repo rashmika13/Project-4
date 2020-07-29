@@ -28,9 +28,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="header-footer">MY APP</header>
-        <NavBar user={this.state.user} handleLogout={this.handleLogout} />
+      <div className="container">
+        <header className="header-footer">STAY ACTIVE</header>
+        <NavBar
+          bg="light"
+          expand="lg"
+          user={this.state.user}
+          handleLogout={this.handleLogout}
+        />
         <Switch>
           <Route
             exact

@@ -62,14 +62,13 @@ class AddActivities extends Component {
   render() {
     return (
       <div>
-        <h3>ADD ACTIVITY </h3>
+        <h3 className="header">ADD ACTIVITY </h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group"></div>
           <div className="form-group">
             <label>Description: </label>
             <input
               type="text"
-              // className="form-control"
+              className="form-control"
               value={this.state.description}
               onChange={this.onChangeDescription}
             />
@@ -78,7 +77,7 @@ class AddActivities extends Component {
             <label>Duration (in minutes): </label>
             <input
               type="text"
-              // className="form-control"
+              className="form-control"
               value={this.state.duration}
               onChange={this.onChangeDuration}
             />

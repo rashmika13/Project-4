@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./ActivitiesList.css";
 import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
 
@@ -12,13 +13,14 @@ const Activity = (props) => (
     <td>
       {props.user && (
         <>
-          <Link to={"/edit/" + props.activity._id}>edit</Link> |
+          <Link to={"/edit/" + props.activity._id}>Edit</Link> |
           <button
+            className=" btn-primary"
             onClick={() => {
               props.deleteActivity(props.activity._id);
             }}
           >
-            delete
+            Delete
           </button>
         </>
       )}
@@ -66,8 +68,8 @@ class ActivitiesList extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Activity List</h1>
+      <div className="div">
+        <h1 className="header">Activity List</h1>
         <table className="table">
           <thead className="thead-light">
             <tr>
