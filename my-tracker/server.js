@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/activities", require("./routes/api/activities"));
+app.use("/api/hydrations", require("./routes/api/hydrations"));
 
 app.use("/api", function (req, res) {
   res.status(404).json({ error: "Resource not found" });

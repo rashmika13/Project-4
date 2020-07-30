@@ -3,6 +3,7 @@ import axios from "axios";
 import "./ActivitiesList.css";
 import { Link } from "react-router-dom";
 import userService from "../../utils/userService";
+// import Hydration from "../Hydration/Hydration";
 
 const Activity = (props) => (
   <tr>

@@ -15,10 +15,4 @@ const activitySchema = new Schema(
   }
 );
 
-// Ensure that initials are uppercase & not longer than 3 characters
-// activitySchema.pre("save", function (next) {
-//   this.initials = this.initials.substr(0, 3).toUpperCase();
-//   next();
-// });
-
 module.exports = mongoose.model("Activity", activitySchema);
