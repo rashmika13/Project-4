@@ -5,6 +5,7 @@
 
 .NavBar-link {
   margin-left: 90px;
+  color: darkmagenta;
 }
 
 .NavBar-welcome {
@@ -18,6 +19,10 @@
 }
 .NavBar-add {
   margin-left: 20px;
-  color: purple;
+  color: darkmagenta;
   font-size: 25px;
+}
+
+.div {
+  padding-bottom: 50px;
 }

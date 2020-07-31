@@ -5,4 +5,9 @@
 .div {
   color: black;
   margin-top: 50px;
+  font-weight: bold;
+}
+
+.table {
+  margin-right: 40px;
 }

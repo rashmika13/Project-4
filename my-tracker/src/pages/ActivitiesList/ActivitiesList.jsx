@@ -26,6 +26,9 @@ const Activity = (props) => (
         </>
       )}
     </td>
+    <td>
+      <Link to={"/show/" + props.activity._id}>Detail</Link>{" "}
+    </td>
   </tr>
 );
 

@@ -1,5 +1,4 @@
 import tokenService from "./tokenService";
-import { token } from "morgan";
 const BASE_URL = "/api/activities/";
 
 export default {

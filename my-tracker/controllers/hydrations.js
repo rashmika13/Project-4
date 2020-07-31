@@ -17,11 +17,11 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  const drinks = req.body.drinks;
+  const drink = req.body.drink;
   const numOfDrinks = Number(req.body.numOfDrinks);
 
   const newHydration = new Hydration({
-    drinks,
+    drink,
     numOfDrinks,
   });
 

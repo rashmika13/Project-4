@@ -7,6 +7,7 @@ import userService from "../../utils/userService";
 import AddActivities from "../AddActivities/AddActivities";
 import EditActivities from "../EditActivities/EditActivities";
 import ActivitiesList from "../ActivitiesList/ActivitiesList";
+import ActivitiesDetail from "../ActivitiesDetail/ActivitiesDetail";
 import NavBar from "../../components/NavBar/NavBar.jsx";
 
 class App extends Component {
@@ -28,7 +29,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="wrapper">
         <header className="header-footer">STAY ACTIVE</header>
         <NavBar
           bg="light"
@@ -86,6 +87,20 @@ class App extends Component {
           <Route
             path="/create"
             render={({ props }) => <AddActivities {...props} />}
+          />
+          <Route
+            path="/show/:id"
+            render={(props) =>
+              userService.getUser() ? (
+                <ActivitiesDetail
+                  location={props.location}
+                  {...props}
+                  user={this.state.user}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
           />
         </Switch>
       </div>
